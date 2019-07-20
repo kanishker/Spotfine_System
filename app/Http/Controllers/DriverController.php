@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\DriverModel as dmo;
+use App\Http\Resources\drivers as driversResource;
 
 class DriverController extends Controller
 {
@@ -13,7 +15,11 @@ class DriverController extends Controller
      */
     public function index()
     {
-        //
+        $drivers = dmo::all();
+        return driversResource::collection($drivers);
+
+        //dd($drivers);
+
     }
 
     /**
@@ -46,6 +52,10 @@ class DriverController extends Controller
     public function show($id)
     {
         //
+        $driver  = dmo::where('LicenseNo', $id)->firstOrFail();
+        return new driversResource($driver);
+
+        //LIC-78958742
     }
 
     /**

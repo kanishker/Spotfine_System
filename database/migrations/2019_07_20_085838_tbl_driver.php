@@ -19,10 +19,9 @@ class TblDriver extends Migration
             $table->string('NIC');
             $table->string('name');
             $table->string('Address');
-            $table->int('Number');
+            $table->integer('Number');
             $table->timestamps();
         });
-    }
     }
 
     /**
